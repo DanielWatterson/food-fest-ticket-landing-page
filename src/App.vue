@@ -116,13 +116,12 @@ export default {
         (item) => item.title === event.title
       );
       if (index === -1) this.wishlist.push(event);
-      else this.wishlist.splice(index, 1); // remove if clicked again
+      else this.wishlist.splice(index, 1);
     },
   },
 
   watch: {
     theme(newVal) {
-
       if (typeof document !== "undefined") {
         document.body.classList.remove("dark", "light");
         document.body.classList.add(newVal);
@@ -131,7 +130,6 @@ export default {
   },
 
   mounted() {
-
     if (typeof document !== "undefined") {
       document.body.classList.add(this.theme);
     }
@@ -141,6 +139,7 @@ export default {
 
 <style>
 
+/* Light/Dark page backgrounds are next to each other */
 body.dark {
   background: linear-gradient(180deg, #000000, #1a1a1a);
   color: #e6e6e6;
@@ -155,40 +154,50 @@ body.light {
   min-height: 100vh;
 }
 
-.app.dark .event-card {
-  border: 1px solid rgba(255, 255, 255, 0.2);
-  background: #111;
-}
-
-.app.light .event-card {
-  border: 1px solid rgba(0, 0, 0, 0.2);
-  background: #ffffffee;
-}
-
-.event-card:hover {
-  transform: translateY(-6px) scale(1.02);
-  box-shadow: 0 8px 26px rgba(0, 0, 0, 0.35);
-  transition: 0.2s ease;
-}
-
-header {
-  padding: 15px 20px;
-  margin-bottom: 25px;
-  border-radius: 10px;
-  backdrop-filter: blur(5px);
+.site-header {
+  width: 100%;
+  position: sticky;        
+  top: 0;                   
+  z-index: 50; 
 }
 
 .nav-bar {
+  background: var(--header-bg);
+  border-bottom: var(--header-border);
+  box-shadow: var(--header-shadow);
+  padding: 15px 25px;
+  border-radius: 0 0 12px 12px;
+
   display: flex;
   flex-wrap: wrap;
   align-items: center;
   justify-content: space-between;
-  gap: 12px;
+  gap: 18px;
+}
+
+/* Theme-controlled colors */
+.app.dark {
+  --header-bg: rgba(20, 20, 20, 0.85);
+  --header-border: 1px solid rgba(255, 255, 255, 0.12);
+  --header-shadow: 0 4px 18px rgba(0, 0, 0, 0.65);
+}
+
+.app.light {
+  --header-bg: rgba(255, 255, 255, 0.9);
+  --header-border: 1px solid rgba(0, 0, 0, 0.08);
+  --header-shadow: 0 4px 14px rgba(0, 0, 0, 0.18);
 }
 
 .logo {
   font-size: 1.8rem;
   font-weight: bold;
+}
+
+.site-title {
+  margin: 0;
+  font-size: 1.7rem;
+  font-weight: 800;
+  letter-spacing: 0.4px;
 }
 
 .wishlist {
@@ -232,6 +241,22 @@ header {
   grid-template-columns: repeat(auto-fit, minmax(280px, 1fr));
   gap: 30px;
   padding: 20px 30px;
+}
+
+.app.dark .event-card {
+  border: 1px solid rgba(255, 255, 255, 0.2);
+  background: #111;
+}
+
+.app.light .event-card {
+  border: 1px solid rgba(0, 0, 0, 0.2);
+  background: #ffffffee;
+}
+
+.event-card:hover {
+  transform: translateY(-6px) scale(1.02);
+  box-shadow: 0 8px 26px rgba(0, 0, 0, 0.35);
+  transition: 0.2s ease;
 }
 
 </style>
