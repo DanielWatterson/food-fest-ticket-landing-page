@@ -94,6 +94,15 @@ export default {
           image:
             "https://i.postimg.cc/YSKV73d2/wooden-signs-pointing-to-food-games-music-festival-rustic-indicating-attractions-lively-promising-fu.webp",
         },
+        {
+          title: "Gamer's Great Festival 2026",
+          price: "R290",
+          location: "Metro Hall",
+          date: "Jan 15, 2026",
+          available: true,
+          image:
+            "https://i.postimg.cc/Y9qzWGBC/732add91-728b-4c9f-ba24-3603a1281150.jpg",
+        },
       ],
     };
   },
@@ -138,7 +147,6 @@ export default {
 </script>
 
 <style>
-
 /* Light/Dark page backgrounds are next to each other */
 body.dark {
   background: linear-gradient(180deg, #000000, #1a1a1a);
@@ -156,9 +164,9 @@ body.light {
 
 .site-header {
   width: 100%;
-  position: sticky;        
-  top: 0;                   
-  z-index: 50; 
+  position: sticky;
+  top: 0;
+  z-index: 50;
 }
 
 .nav-bar {
@@ -258,5 +266,4 @@ body.light {
   box-shadow: 0 8px 26px rgba(0, 0, 0, 0.35);
   transition: 0.2s ease;
 }
-
 </style>

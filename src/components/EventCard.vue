@@ -3,6 +3,9 @@
     <div class="image-container">
       <img :src="event.image" :alt="event.title" />
       <div v-if="!event.available" class="sold-overlay">SOLD OUT</div>
+      <div class="fav-tag" @click="toggleSave">
+        {{ saved ? "❤️" : "🤍" }}
+      </div>
     </div>
 
     <h2 class="card-title">{{ event.title }}</h2>
@@ -39,7 +42,6 @@ export default {
   },
   methods: {
     bookEvent(title) {
-
       alert(`You booked: ${title}`);
     },
     toggleSave() {
@@ -62,10 +64,27 @@ export default {
   text-align: center;
 }
 
+.fav-tag {
+  position: absolute;
+  top: 10px;
+  right: 10px;
+  font-size: 26px;
+  cursor: pointer;
+  user-select: none;
+  transition: transform 0.2s ease;
+}
+
+.fav-tag:hover {
+  transform: scale(1.2);
+}
+
+.fav-tag:active {
+  transform: scale(0.9);
+}
 
 .image-container {
   width: 100%;
-  height: 160px;                     
+  height: 160px;
   position: relative;
   overflow: hidden;
   border-radius: 8px;
@@ -76,7 +95,6 @@ export default {
   height: 100%;
   object-fit: cover;
 }
-
 
 .sold-overlay {
   position: absolute;
@@ -89,7 +107,6 @@ export default {
   justify-content: center;
   align-items: center;
 }
-
 
 h2 {
   margin: 8px 0 2px;
@@ -108,13 +125,11 @@ h2 {
   margin-bottom: 10px;
 }
 
-
 .button-row {
   display: flex;
   gap: 10px;
   margin-top: auto;
 }
-
 
 .button-row button {
   flex: 1;
@@ -139,5 +154,4 @@ h2 {
   opacity: 0.45;
   cursor: not-allowed;
 }
-
 </style>
